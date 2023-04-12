@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
 
       <main className="h-screen w-screen flex justify-center">
-        <div className="flex flex-col p-5 w-1/2">
+        <div className="flex flex-col p-5 w-1/2 max-[800px]:w-screen">
           <div className="flex justify-start items-start flex-col">
             <h1 className="font-bold text-3xl">Hey, Herzlia</h1>
             <p>
@@ -28,7 +28,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex  p-5 justify-end items-center">
+          <div className="flex pt-5 pb-5 justify-end items-center">
             <button className="bg-indigo-500 h-[3rem] w-[3rem] flex justify-center items-center rounded-3xl hover:bg-indigo-400">
               <BiPlus />
             </button>
