@@ -1,8 +1,8 @@
-export interface User {
+export default interface User {
   id?: number;
   name: string;
 }
 
-export type ResponseError = {
+export default interface ResponseError {
   message: string;
 };
