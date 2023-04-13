@@ -7,8 +7,7 @@ export default function userHandler(
 ) {
   const { query, method } = req;
   const { id } = query;
-  let person: User = users.find((p) => p.id === id);
-  console.log("🚀 ~ file: [id].ts:11 ~ person:", person);
+  const person = users.find((p) => p.id === parseInt(id as string));
 
   switch (method) {
     case "GET":
@@ -19,7 +18,9 @@ export default function userHandler(
       break;
     case "PUT":
       // Update or create data in your database
-      res.status(200).json(person);
+      person
+        ? res.status(200).json(person)
+        : res.status(404).json({ message: `User with id: ${id} not found.` });
       break;
     default:
       res.setHeader("Allow", ["GET", "PUT"]);
