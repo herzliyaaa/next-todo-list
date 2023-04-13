@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { users } from "./data";
-import { User, ResponseError } from "../../interfaces";
+import  User from "../../interfaces";
+import ResponseError from "../../interfaces/error"
 export default function userHandler(
   req: NextApiRequest,
   res: NextApiResponse<User | ResponseError>
