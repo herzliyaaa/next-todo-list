@@ -35,27 +35,27 @@ export default function Home() {
           </div>
 
           {/* LIST COMPONENT */}
-          <div className="p-4 rounded border border-gray-700 bg-gray-50 h-auto dark:bg-[#0d1117]">
+          <div className="p-4 rounded-2xl border border-gray-700 bg-gray-50 h-auto dark:bg-[#CBD87D]">
             <div className="flex justify-between items-center">
-              <a className="text-white font-bold hover:text-blue-400" href="#">
-                TEST LIST
+              <a className="text-black text-2xl font-bold" href="#">
+               Work
               </a>
               <div className="flex">
-                <button className="hover:border-white text-white bg-[#21262d] p-1 border border-gray-600 rounded-l hover:border-b hover:border-blue-400-lg">
-                  ⭐Star
+                {/* <button className="hover:border-white text-white bg-[#21262d] p-1 border border-gray-600 rounded-l hover:border-b hover:border-blue-400-lg">
+                  ⭐
                 </button>
                 <button className="hover:border-white text-white bg-[#21262d] p-1 border border-gray-600 rounded-r-lg">
                   🔻
-                </button>
+                </button> */}
               </div>
             </div>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-black">
               This is test for description
             </p>
             <div className="mt-3 flex items-center gap-5">
-              <p className="text-sm text-gray-400">🔴 HIGH</p>
+              <p className="text-sm text-black">🔴 HIGH</p>
 
-              <p className="text-sm text-gray-400">Updated Feb 9</p>
+              <p className="text-sm text-black">Updated Feb 9</p>
             </div>
           </div>
         </div>
