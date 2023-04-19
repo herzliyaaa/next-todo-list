@@ -6,14 +6,17 @@ export const lists = [
       {
         taskId: 1,
         taskName: "Create a unit test",
+        completed: false,
       },
       {
         taskId: 2,
         taskName: "Refactor",
+        completed: false,
       },
       {
         taskId: 3,
         taskName: "Deploy in Production Environment",
+        completed: false,
       },
     ],
   },
