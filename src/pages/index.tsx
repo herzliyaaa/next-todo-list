@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import styles from "@/styles/Home.module.css";
 import { BiPlus } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const dateToday = new Date();
@@ -11,11 +11,17 @@ export default function Home() {
   const month = dateToday.toLocaleString("default", { month: "long" });
   const year = dateToday.getFullYear();
   const [todos, setTodos] = useState<any[]>([]);
+
   const fetchTodos = async () => {
     const response = await fetch("/api/lists");
     const data = await response.json();
     setTodos(data);
   };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
   return (
     <>
       <Head>
