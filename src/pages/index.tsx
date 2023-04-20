@@ -19,10 +19,11 @@ export default function Home() {
   };
 
   useEffect(() => {
+    setLoading(true);
     setTimeout(() => {
-      setLoading(true);
+      fetchTodos();
+      setLoading(false);
     }, 2000);
-    fetchTodos();
   }, []);
 
   return (
@@ -57,7 +58,10 @@ export default function Home() {
             <>
               {todos.map((todo) => {
                 return (
-                  <div className="p-4 rounded-2xl border border-gray-700 bg-gray-50 h-auto dark:bg-[#CBD87D]" key={todo.id}>
+                  <div
+                    className="p-4 rounded-2xl border border-gray-700 bg-gray-50 h-auto dark:bg-[#CBD87D]"
+                    key={todo.id}
+                  >
                     <div className="flex justify-between items-center">
                       <a className="text-black text-2xl font-bold" href="#">
                         {todo.name}
