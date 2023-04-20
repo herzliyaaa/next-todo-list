@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-
-import styles from "@/styles/Home.module.css";
+import Loader from "./loader";
 import { BiPlus } from "react-icons/bi";
 import { useEffect, useState } from "react";
 
@@ -11,6 +10,7 @@ export default function Home() {
   const month = dateToday.toLocaleString("default", { month: "long" });
   const year = dateToday.getFullYear();
   const [todos, setTodos] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchTodos = async () => {
     const response = await fetch("/api/lists");
@@ -19,6 +19,9 @@ export default function Home() {
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 2000);
     fetchTodos();
   }, []);
 
@@ -44,36 +47,42 @@ export default function Home() {
               <BiPlus onClick={fetchTodos} />
             </button>
           </div>
-           
-          {todos.map((todo) => {
-            return (
-              <>
-                <div className="p-4 rounded-2xl border border-gray-700 bg-gray-50 h-auto dark:bg-[#CBD87D]">
-                  <div className="flex justify-between items-center">
-                    <a className="text-black text-2xl font-bold" href="#">
-                      {todo.name}
-                    </a>
-                    <div className="flex">
-                      {/* <button className="hover:border-white text-white bg-[#21262d] p-1 border border-gray-600 rounded-l hover:border-b hover:border-blue-400-lg">
+          {loading ? (
+            <div className="flex flex-col p-5 w-1/2 max-[800px]:w-screen">
+              <div className="flex justify-center items-center">
+                <Loader />
+              </div>
+            </div>
+          ) : (
+            <>
+              {todos.map((todo) => {
+                return (
+                  <div className="p-4 rounded-2xl border border-gray-700 bg-gray-50 h-auto dark:bg-[#CBD87D]">
+                    <div className="flex justify-between items-center">
+                      <a className="text-black text-2xl font-bold" href="#">
+                        {todo.name}
+                      </a>
+                      <div className="flex">
+                        {/* <button className="hover:border-white text-white bg-[#21262d] p-1 border border-gray-600 rounded-l hover:border-b hover:border-blue-400-lg">
                   ⭐
                 </button>
                 <button className="hover:border-white text-white bg-[#21262d] p-1 border border-gray-600 rounded-r-lg">
                   🔻
                 </button> */}
+                      </div>
+                    </div>
+                    <p className="text-sm text-black">
+                      This is test for description
+                    </p>
+                    <div className="mt-3 flex items-center gap-5">
+                      <p className="text-sm text-black">🔴 HIGH</p>
+                      <p className="text-sm text-black">Updated Feb 9</p>
                     </div>
                   </div>
-                  <p className="text-sm text-black">
-                    This is test for description
-                  </p>
-                  <div className="mt-3 flex items-center gap-5">
-                    <p className="text-sm text-black">🔴 HIGH</p>
-                    <p className="text-sm text-black">Updated Feb 9</p>
-                  </div>
-                </div>
-              </>
-            );
-          })}
-              
+                );
+              })}
+            </>
+          )}
         </div>
       </main>
     </>
