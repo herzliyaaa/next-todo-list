@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import Loader from "./loader";
+import { List } from "@/interfaces";
+import Loader from "@/components/common/loader";
+import CardList from "@/components/home/list";
 import { BiPlus } from "react-icons/bi";
 import { useEffect, useState } from "react";
 
@@ -9,7 +11,7 @@ export default function Home() {
   const day = dateToday.getDate();
   const month = dateToday.toLocaleString("default", { month: "long" });
   const year = dateToday.getFullYear();
-  const [todos, setTodos] = useState<any[]>([]);
+  const [todos, setTodos] = useState<List[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchTodos = async () => {
@@ -55,26 +57,7 @@ export default function Home() {
           ) : (
             <>
               {todos.map((todo) => {
-                return (
-                  <div
-                    className="p-4 rounded-2xl border border-gray-700 bg-gray-50 h-auto dark:bg-[#CBD87D]"
-                    key={todo.id}
-                  >
-                    <div className="flex justify-between items-center">
-                      <a className="text-black text-2xl font-bold" href="#">
-                        {todo.name}
-                      </a>
-                      <div className="flex"></div>
-                    </div>
-                    <p className="text-sm text-black">
-                      This is test for description
-                    </p>
-                    <div className="mt-3 flex items-center gap-5">
-                      <p className="text-sm text-black">🔴 HIGH</p>
-                      <p className="text-sm text-black">Updated Feb 9</p>
-                    </div>
-                  </div>
-                );
+                <CardList {...todo} />;
               })}
             </>
           )}
