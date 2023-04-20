@@ -49,10 +49,8 @@ export default function Home() {
             </button>
           </div>
           {loading ? (
-            <div className="flex flex-col p-5 w-1/2 max-[800px]:w-screen">
-              <div className="flex justify-center items-center">
-                <Loader />
-              </div>
+            <div className="flex justify-center items-center">
+              <Loader />
             </div>
           ) : (
             <>
@@ -66,14 +64,7 @@ export default function Home() {
                       <a className="text-black text-2xl font-bold" href="#">
                         {todo.name}
                       </a>
-                      <div className="flex">
-                        {/* <button className="hover:border-white text-white bg-[#21262d] p-1 border border-gray-600 rounded-l hover:border-b hover:border-blue-400-lg">
-                  ⭐
-                </button>
-                <button className="hover:border-white text-white bg-[#21262d] p-1 border border-gray-600 rounded-r-lg">
-                  🔻
-                </button> */}
-                      </div>
+                      <div className="flex"></div>
                     </div>
                     <p className="text-sm text-black">
                       This is test for description
