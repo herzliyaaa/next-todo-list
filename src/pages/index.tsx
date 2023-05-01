@@ -58,7 +58,7 @@ export default function Home() {
             <>
               {todos.map((todo) => {
                 return <div className="mt-2">
-                  <CardList key={todo.id} {...todo} />
+                  <CardList {...todo} key={todo.id} />
                 </div>;
               })}
             </>
