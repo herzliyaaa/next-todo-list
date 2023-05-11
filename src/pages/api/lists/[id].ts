@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { lists } from "./data";
 import { List } from "@/interfaces";
-import ResponseError from "@/interfaces/error";
+import { ResponseError } from "@/interfaces/error";
 export default function userHandler(
   req: NextApiRequest,
   res: NextApiResponse<List | ResponseError>
