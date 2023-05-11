@@ -3,7 +3,13 @@ export interface User {
   name: string;
 }
 
+export interface Task {
+  taskId: number;
+  taskName: string;
+  completed: boolean;
+}
 export interface List {
-  id?: number;
+  id: number;
   name: string;
+  task: Task[];
 }
