@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { BsArrowLeftShort } from "react-icons/bs";
 import { Task } from "@/interfaces";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { BsArrowLeftShort } from "react-icons/bs";
 
 function ListItem() {
   const router = useRouter();
@@ -9,6 +9,14 @@ function ListItem() {
   const [todo, setTodo] = useState<any>({});
   const [tasks, setTasks] = useState<Task[]>([]);
 
+  const markTodo = (id: number) => {
+    console.log(`MARKED ${id}!`);
+    setTasks(
+      tasks.map((task) =>
+        task.taskId === id ? { ...task, completed: true } : task
+      )
+    );
+  };
   useEffect(() => {
     const fetchTodoDetails = async () => {
       const response = await fetch(`/api/lists/${id}`);
@@ -16,6 +24,7 @@ function ListItem() {
       setTodo(data);
       setTasks(data.task);
     };
+
     if (id) {
       fetchTodoDetails();
     }
@@ -25,7 +34,7 @@ function ListItem() {
     <main className="h-screen w-screen flex justify-center">
       <div className="flex flex-col p-5 w-1/2 max-[800px]:w-screen">
         <div className="flex justify-start items-start flex-col">
-          <BsArrowLeftShort size={40} onClick={() => router.back()} />
+          <BsArrowLeftShort size={40} onClick={() => router.back()} className="cursor-pointer" />
           {/* <button className="bg-indigo-500 h-[3rem] w-[3rem] flex justify-center items-center rounded-3xl hover:bg-indigo-400"></button> */}
         </div>
         <div className="flex pt-5 pb-5 justify-start items-center">
@@ -40,11 +49,18 @@ function ListItem() {
           {tasks.map((task: Task) => {
             return (
               <div
-                className="p-4  mb-1 rounded-2xl border border-gray-700 bg-gray-50 h-auto dark:bg-[#4c5762] w-full "
+                className={`p-4  mb-1 rounded-2xl border border-gray-700 bg-gray-50 h-auto dark:bg-[#4c5762] w-full ${
+                  task.completed == true ? "text-red" : ""
+                } `}
                 key={task.taskId}
               >
-                <div className="flex justify-start">
-                  <p className="text-sm text-white">{task.taskName}</p>
+                <div className="flex flex-row gap-2">
+                  <span
+                    onClick={() => markTodo(task.taskId)}
+                    className="cursor-pointer"
+                  >
+                    <p className="text-sm text-white">{task.taskName}</p>
+                  </span>
                 </div>
               </div>
             );

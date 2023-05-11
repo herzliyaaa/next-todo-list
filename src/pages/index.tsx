@@ -1,23 +1,22 @@
-import Head from "next/head";
-import Image from "next/image";
-import { List } from "@/interfaces";
 import Loader from "@/components/common/loader";
 import CardList from "@/components/home/list";
-import { BiPlus } from "react-icons/bi";
+import { List } from "@/interfaces";
+import Head from "next/head";
 import { useEffect, useState } from "react";
+import { BiPlus } from "react-icons/bi";
 
 export default function Home() {
   const dateToday = new Date();
   const day = dateToday.getDate();
   const month = dateToday.toLocaleString("default", { month: "long" });
   const year = dateToday.getFullYear();
-  const [todos, setTodos] = useState<List[]>([]);
+  const [lists, setLists] = useState<List[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchTodos = async () => {
     const response = await fetch("/api/lists");
     const data = await response.json();
-    setTodos(data);
+    setLists(data);
   };
 
   useEffect(() => {
@@ -56,9 +55,9 @@ export default function Home() {
             </div>
           ) : (
             <>
-              {todos.map((todo) => {
-                return <div key={todo.id} className="mt-2">
-                  <CardList {...todo}  />
+              {lists.map((list: List) => {
+                return <div key={list.id} className="mt-2">
+                  <CardList {...list}  />
                 </div>;
               })}
             </>
