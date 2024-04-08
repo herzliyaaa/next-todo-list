@@ -47,7 +47,7 @@ export const lists = [
     task: [
       {
         taskId: 1,
-        taskName: "Bantay Bata.",
+        taskName: "Clean the house",
         completed: false,
       },
     ],

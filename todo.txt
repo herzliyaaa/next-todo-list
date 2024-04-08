@@ -1,4 +1,10 @@
 [/] Add loading/spinner
 [] Fix spacing
 [] Add modal/form 
- 
+
+GET
+http://localhost:3000/api/tasks?listName=Personal
+
+POST
+http://localhost:3000/api/tasks
+ {"taskName":"Refactor the codebase","completed":false, listId: 6613b8226020b05876115eea}
