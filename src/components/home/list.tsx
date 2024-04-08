@@ -1,5 +1,5 @@
 import { List } from "@/interfaces";
-
+import Link from "next/link";
 const CardList: React.FC<List> = ({ id, name }) => {
   return (
     <div
@@ -7,9 +7,9 @@ const CardList: React.FC<List> = ({ id, name }) => {
       key={id}
     >
       <div className="flex justify-between items-center">
-        <a className="text-black text-2xl font-bold" href="#">
-          {name}
-        </a>
+        <Link href={`lists/${id}`}>
+          <p className="text-black text-2xl font-bold">{name}</p>
+        </Link>
         <div className="flex"></div>
       </div>
       <p className="text-sm text-black">This is test for description</p>

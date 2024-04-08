@@ -27,14 +27,17 @@ export const lists = [
       {
         taskId: 1,
         taskName: "Create a prototype",
+        completed: false,
       },
       {
         taskId: 2,
         taskName: "Implement Prisma",
+        completed: false,
       },
       {
         taskId: 3,
         taskName: "Deploy in Vercel",
+        completed: false,
       },
     ],
   },
@@ -45,6 +48,7 @@ export const lists = [
       {
         taskId: 1,
         taskName: "Bantay Bata.",
+        completed: false,
       },
     ],
   },
